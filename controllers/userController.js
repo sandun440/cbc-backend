@@ -67,7 +67,7 @@ export function loginUser(req, res) {
             },
             process.env.SECRET_KEY
             );
-
+            
             res.json({
             message: "User logged in",
             token: token,
