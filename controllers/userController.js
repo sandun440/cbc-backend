@@ -112,9 +112,9 @@ export function isCustomer(req) {
     }
 
 // {
-//     "email": "sandun250@example.com","password": "Securepassword123" ---- "admin",
+//     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
 // }
 
 // {
-//     "email": "sandun22@example.com","password": "Securepassword123" --- "coustomer"
+//     "email": "sandun200@example.com","password": "hashedpassword123" --- "coustomer"
 // }
