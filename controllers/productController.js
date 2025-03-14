@@ -62,7 +62,6 @@ export function updateProduct(req,res){
     }
 
     const productId = req.params.productId
-
     const newProductData = req.body
 
     Product.updateOne(
