@@ -113,7 +113,6 @@ export function isCustomer(req) {
 }
 
 export async function googleLogin(req,res){
-    console.log(req.body)
     const token = req.body.token
     //'https://www.googleapis.com/oauth2/v3/userinfo'
     try{

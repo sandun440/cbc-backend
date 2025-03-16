@@ -53,7 +53,6 @@ export async function createOrder(req, res) {
       };
     }
 
-    console.log(newProductArray);
     newOrderData.orderedItems = newProductArray;
 
     newOrderData.orderId = orderId;
@@ -108,7 +107,6 @@ export async function getQuote(req, res) {
 
     let total = 0;
     let labeledTotal = 0;
-    console.log(req.body);
 
     for (let i = 0; i < newOrderData.orderedItems.length; i++) {
       const product = await Product.findOne({
@@ -134,7 +132,6 @@ export async function getQuote(req, res) {
         image: product.images[0],
       };
     }
-    console.log(newProductArray);
     newOrderData.orderedItems = newProductArray;
     newOrderData.total = total;
 
