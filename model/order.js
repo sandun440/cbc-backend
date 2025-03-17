@@ -39,7 +39,7 @@ const orderSchema = mongoose.Schema({
     },
     status : {
         type : String,
-        defult : "preparing"
+        default : "preparing"
     },
     notes : {
         type : String
