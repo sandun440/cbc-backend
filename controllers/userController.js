@@ -176,6 +176,16 @@ export async function googleLogin(req,res){
     }
   }
 
+export async function getUser(req, res) {
+  if (req.user == null) {
+    res.status(404).json({
+      message: "Please login to view user details",
+    });
+    return;
+  }
+  res.json(req.user);
+}
+
 // {
 //     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
 // }
