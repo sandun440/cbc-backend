@@ -1,5 +1,5 @@
 import Order from "../model/order.js";
-import { isCustomer } from "./userController.js";
+import { isAdmin, isCustomer } from "./userController.js";
 import Product from "../model/product.js";
 
 export async function createOrder(req, res) {
@@ -141,6 +141,49 @@ export async function getQuote(req, res) {
       labeledTotal: labeledTotal,
     });
   } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+}
+
+export async function updateOrder(req, res) {
+  if (!isAdmin(req)) {
+    res.json({
+      message: "Please login as admin to update orders",
+    });
+  }
+  
+  try {
+    const orderId = req.params.orderId;
+
+    const order = await Order.findOne({
+      orderId: orderId,
+    });
+
+    if (order == null) {
+      res.status(404).json({
+        message: "Order not found",
+      })
+      return;
+    }
+
+    const notes = req.body.notes;
+    const status = req.body.status;
+
+    const updateOrder = await Order.findOneAndUpdate(
+      { orderId: orderId },
+      { notes: notes, status: status }
+    );
+
+    res.json({
+      message: "Order updated",
+      updateOrder: updateOrder
+    });
+
+  }catch(error){
+
+    
     res.status(500).json({
       message: error.message,
     });
