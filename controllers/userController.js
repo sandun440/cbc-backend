@@ -162,7 +162,7 @@ export async function googleLogin(req,res){
             message: "User created"
           })
         }).catch((error)=>{
-          res.json({      
+          res.status(403).json({      
             message: "User not created"
           })
         })
