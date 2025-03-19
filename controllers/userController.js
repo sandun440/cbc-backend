@@ -36,7 +36,7 @@ export function createUser(req, res) {
       });
     })
     .catch(() => {
-      res.json({
+      res.status(403).json({
         message: "User not created",
       });
     });
