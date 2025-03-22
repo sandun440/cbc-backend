@@ -4,7 +4,7 @@ import { createUser, getUser, getAllUsers, googleLogin, loginUser } from '../con
 const userRouter = express.Router();
 
 userRouter.get("/", getUser);
-userRouter.get("/users", getAllUsers);
+userRouter.get("/customers", getAllUsers);
 userRouter.post("/signup", createUser);
 userRouter.post("/login", loginUser);
 userRouter.post("/google", googleLogin);
