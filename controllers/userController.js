@@ -186,6 +186,12 @@ export async function getUser(req, res) {
   res.json(req.user);
 }
 
+export function getAllUsers(req, res) {
+  User.find({}).then((users) => {
+    res.json(users);
+  });
+}
+
 // {
 //     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
 // }
