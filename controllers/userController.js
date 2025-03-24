@@ -192,6 +192,31 @@ export function getAllUsers(req, res) {
   });
 }
 
+export function updateUserType(req, res){
+  if (!isAdmin(req)) {
+    res.status(403).json({
+      message: "Please login as admin to edit User Type",
+    });
+    return;
+  }
+
+  const userEmail = req.params.email;
+  const newUser = req.body;
+
+  User.updateOne({email : userEmail}, newUser).then(
+    ()=>{
+      res.json({
+        message : "User Type updated."
+      })
+    }
+  ).catch(
+    (e)=>{
+      res.status(403).json({
+        message : e
+      })
+    })
+}
+
 // {
 //     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
 // }
