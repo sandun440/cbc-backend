@@ -4,8 +4,6 @@ export async function createReview(req, res) {
   try {
     const lastRiview = await Review.find().sort({ reviewId: -1 }).limit(1);
 
-    console.log(lastRiview);
-
     if (lastRiview.length == 0) {
       req.body.reviewId = "RIV0001";
     } else {
