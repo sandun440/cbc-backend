@@ -43,10 +43,24 @@ export async function getReviews(req, res) {
 }
 
 export async function deleteReview(req, res) {
+  const reviewId = req.params.reviewId;
   try {
-    await Review.deleteOne({ _id: req.params.reviewId });
+    await Review.deleteOne({ reviewId: reviewId });
     res.json({ message: "Review deleted" });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+}
+
+export async function getAllReviews(req, res) {
+  try {
+    const reviews = await Review.find({});
+    res.json(reviews);
+  } catch (error) {
+    res.status(500).json(
+      { 
+        message: error.message 
+      }
+    );
   }
 }
