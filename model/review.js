@@ -26,7 +26,11 @@ const reviewSchema = mongoose.Schema({
   description : {
     type : String,
     required : true
-  }
+  },
+  isVisible : {
+    type : Boolean,
+    default : true
+  },
 }); 
 
 const Review = mongoose.model("Reviews", reviewSchema);
