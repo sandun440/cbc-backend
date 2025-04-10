@@ -217,6 +217,30 @@ export function updateUserType(req, res){
     })
 }
 
+export function changeUserInfo(req, res) {
+  if (req.user == null) {
+    res.status(404).json({
+      message: "Please login to edit user details",
+    });
+    return;
+  }
+
+  const userEmail = req.user.email;
+  const newUser = req.body;
+
+  User.updateOne({ email: userEmail }, newUser)
+    .then(() => {
+      res.json({
+        message: "User details updated.",
+      });
+    })
+    .catch((e) => {
+      res.status(403).json({
+        message: e,
+      });
+    });
+}
+
 // {
 //     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
 // }
