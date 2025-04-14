@@ -78,6 +78,7 @@ export function loginUser(req, res) {
             type: user.type,
             profilePicture: user.profilePicture,
             email: user.email,
+            isBlocked: user.isBlocked,
           },
         });
       } else {
