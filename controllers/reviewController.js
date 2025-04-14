@@ -13,7 +13,9 @@ export async function createReview(req, res) {
       const newNumber = (number + 1).toString().padStart(4, "0");
       req.body.reviewId = "RIV" + newNumber;
     }
+    req.body.email = req.user.email;
     const newReview = new Review(req.body);
+    console.log("Creating review with data:", req.body);
     await newReview.save();
     res.json(
       { 
