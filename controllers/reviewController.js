@@ -66,3 +66,12 @@ export async function getAllReviews(req, res) {
     );
   }
 }
+
+export async function getReviewCount(req, res) {
+  try {
+    const count = await Review.countDocuments({});
+    res.json({ count });
+  } catch (e) {
+    res.status(500).json({ message: "Error fetching Review count" });
+  }
+}

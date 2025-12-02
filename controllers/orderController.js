@@ -189,3 +189,12 @@ export async function updateOrder(req, res) {
     });
   }
 }
+
+export async function getOderCount(req, res) {
+  try {
+    const count = await Order.countDocuments({});
+    res.json({ count });
+  } catch (e) {
+    res.status(500).json({ message: "Error fetching Order count" });
+  }
+}

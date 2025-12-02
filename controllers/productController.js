@@ -110,3 +110,13 @@ export async function searchProduct(req, res) {
     });
   }
 }
+
+
+export async function getProductCount(req, res) {
+  try {
+    const count = await Product.countDocuments({});
+    res.json({ count });
+  } catch (e) {
+    res.status(500).json({ message: "Error fetching Review count" });
+  }
+}

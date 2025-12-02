@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import axios from "axios";
+import Review from "../model/review.js";
 dotenv.config();
 
 export function createUser(req, res) {
@@ -241,6 +242,16 @@ export function changeUserInfo(req, res) {
       });
     });
 }
+
+export async function getUserCount(req, res) {
+  try {
+    const count = await User.countDocuments({});
+    res.json({ count });
+  } catch (e) {
+    res.status(500).json({ message: "Error fetching user count" });
+  }
+}
+
 
 // {
 //     "email": "sandun250@example.com","password": "hashedpassword123" ---- "admin",
